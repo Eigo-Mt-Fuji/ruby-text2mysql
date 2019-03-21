@@ -37,10 +37,10 @@ File.open("data.txt", "r", :encoding => "SJIS") do |fin|
   end
 end
 
-# print load data command
+# print load data command (TODO: execute by mysql-cli in terminal directly, or fix this program)
 column_names = column_definitions.map{|column, range| 
   "#{column}"
 }
 column_names_str = column_names.join(",")
-puts "LOAD DATA LOCAL INFILE './bac.csv' INTO TABLE bac FIELDS TERMINATED BY ',' LINES TERMINATED BY '\n' IGNORE 1 LINES (#{column_names_str});"
+puts "LOAD DATA LOCAL INFILE './bac.csv' INTO TABLE bac FIELDS TERMINATED BY ',' LINES TERMINATED BY '\n' (#{column_names_str});"
 

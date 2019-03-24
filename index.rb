@@ -24,9 +24,9 @@ column_definitions = {
 }
 
 # read data , conversion
-File.open("data.txt", "r", :encoding => "SJIS") do |fin| 
+File.open("./original/data.txt", "r", :encoding => "SJIS") do |fin| 
 
-  File.open("bac.csv", "w") do |fout| 
+  File.open("./datas/bac.csv", "w") do |fout| 
 
     fin.each_line do |original|
       column_values = column_definitions.map{|column, range| 
@@ -42,5 +42,5 @@ column_names = column_definitions.map{|column, range|
   "#{column}"
 }
 column_names_str = column_names.join(",")
-puts "LOAD DATA LOCAL INFILE './bac.csv' INTO TABLE bac FIELDS TERMINATED BY ',' LINES TERMINATED BY '\n' (#{column_names_str});"
+puts "LOAD DATA LOCAL INFILE './datas/bac.csv' INTO TABLE bac FIELDS TERMINATED BY ',' LINES TERMINATED BY '\n' (#{column_names_str});"
 
